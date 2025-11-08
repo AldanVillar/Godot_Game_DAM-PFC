@@ -10,14 +10,14 @@ var damage = false
 var atq = false
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var animated_atq = $"atq/AnimatedSprite2D"
-	
+
 func _physics_process(delta: float) -> void:
 	jump(delta)
 	move_x()
 	flip()
 	update_movement_animations()
-
+	move_and_slide()
+	
 func jump(delta):
 	if atq == false and damage == false:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -39,7 +39,8 @@ func flip():
 		if (is_facing_right and velocity.x < 0) or (not is_facing_right and velocity.x > 0):
 			scale.x *= -1
 			is_facing_right = not is_facing_right
-			
+
+
 func update_movement_animations():
 	if atq == false and damage == false:
 		if not is_on_floor():

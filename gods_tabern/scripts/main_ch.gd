@@ -49,20 +49,12 @@ func update_movement_animations():
 			else:
 				animated_sprite.play("fall")
 		else:
-			if scale.x == 1:
-				if velocity.x > 0:
-					animated_sprite.play("walk")
-				elif velocity.x < 0:
-					animated_sprite.play("walk reverse")
-				else:
-					animated_sprite.play("idle")
+			if velocity.x > 0:
+				animated_sprite.play("walk")
+			elif velocity.x < 0:
+				animated_sprite.play("walk")
 			else:
-				if velocity.x > 0:
-					animated_sprite.play("walk reverse")
-				elif velocity.x < 0:
-					animated_sprite.play("walk")
-				else:
-					animated_sprite.play("idle")
+				animated_sprite.play("idle")
 				
 func _damage():
 	vidas -= 1

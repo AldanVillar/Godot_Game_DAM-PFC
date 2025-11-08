@@ -1,9 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://b6icmt548otk7"]
+[gd_scene load_steps=46 format=3 uid="uid://b6icmt548otk7"]
 
 [ext_resource type="Texture2D" uid="uid://cm0n2rk5vo850" path="res://sprites/Samurai/ATTACK 1.png" id="1_2e3yu"]
 [ext_resource type="Script" path="res://scripts/main_ch.gd" id="1_n3ddw"]
 [ext_resource type="Texture2D" uid="uid://binfiou2nv6b0" path="res://sprites/Samurai/IDLE.png" id="1_uuex1"]
 [ext_resource type="Texture2D" uid="uid://bt8fb3cghrn8p" path="res://sprites/Samurai/RUN.png" id="3_3dc6y"]
+[ext_resource type="Texture2D" uid="uid://bygyu6fvl1r0b" path="res://sprites/Samurai/HURT.png" id="3_kn5rc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgqog"]
 size = Vector2(33, 84)
@@ -35,6 +36,22 @@ region = Rect2(480, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sp1ii"]
 atlas = ExtResource("1_2e3yu")
 region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1156e"]
+atlas = ExtResource("3_kn5rc")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8vxq"]
+atlas = ExtResource("3_kn5rc")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywysg"]
+atlas = ExtResource("3_kn5rc")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp671"]
+atlas = ExtResource("3_kn5rc")
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oagy4"]
 atlas = ExtResource("1_uuex1")
@@ -174,6 +191,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1156e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8vxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywysg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp671")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oagy4")
 }, {
 "duration": 1.0,
@@ -281,4 +315,4 @@ texture_filter = 1
 position = Vector2(-1.00001, -42)
 scale = Vector2(2.59375, 2.59375)
 sprite_frames = SubResource("SpriteFrames_g8d0h")
-animation = &"jump"
+animation = &"damage"

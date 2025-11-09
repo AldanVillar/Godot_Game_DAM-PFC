@@ -12,6 +12,9 @@ var block = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+func _ready():
+	$"atq/CollisionShape2D".disabled = true
+
 func _physics_process(delta: float) -> void:
 	jump(delta)
 	move_x()
@@ -63,10 +66,12 @@ func _atq():
 	if atq == false and damage == false and block == false:
 		if Input.is_action_just_pressed("atq") and velocity.y == 0:
 			atq = true
+			$"atq/CollisionShape2D".disabled = false
 			velocity.y = 0
 			velocity.x = 0
 			animated_sprite.play("atq")
 			await (animated_sprite.animation_finished)
+			$"atq/CollisionShape2D".disabled = true
 			atq = false
 
 func _block():
@@ -78,6 +83,9 @@ func _block():
 			animated_sprite.play("block")
 			await (animated_sprite.animation_finished)
 			block = false
+			
+func parry():
+	print()
 				
 func _damage():
 	vidas -= 1

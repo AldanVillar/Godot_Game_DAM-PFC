@@ -8,6 +8,7 @@ var is_facing_right = true
 var vidas = 10
 var damage = false
 var atq = false
+var block = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -15,11 +16,13 @@ func _physics_process(delta: float) -> void:
 	jump(delta)
 	move_x()
 	flip()
+	_atq()
+	_block()
 	update_movement_animations()
 	move_and_slide()
 	
 func jump(delta):
-	if atq == false and damage == false:
+	if atq == false and block == false and damage == false:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		
@@ -27,7 +30,7 @@ func jump(delta):
 			velocity.y += gravity * delta
 
 func move_x():
-	if atq == false and damage == false:
+	if atq == false and block == false and damage == false:
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction:
 			velocity.x = direction * SPEED
@@ -35,14 +38,14 @@ func move_x():
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 func flip():
-	if atq == false and damage == false:
+	if atq == false and block == false and damage == false:
 		if (is_facing_right and velocity.x < 0) or (not is_facing_right and velocity.x > 0):
 			scale.x *= -1
 			is_facing_right = not is_facing_right
 
 
 func update_movement_animations():
-	if atq == false and damage == false:
+	if atq == false and block == false and damage == false:
 		if not is_on_floor():
 			if velocity.y < 0:
 				animated_sprite.play("jump")
@@ -55,6 +58,26 @@ func update_movement_animations():
 				animated_sprite.play("walk")
 			else:
 				animated_sprite.play("idle")
+				
+func _atq():
+	if atq == false and damage == false and block == false:
+		if Input.is_action_just_pressed("atq") and velocity.y == 0:
+			atq = true
+			velocity.y = 0
+			velocity.x = 0
+			animated_sprite.play("atq")
+			await (animated_sprite.animation_finished)
+			atq = false
+
+func _block():
+	if atq == false and damage == false and block == false:
+		if Input.is_action_just_pressed("block") and velocity.y == 0:
+			block = true
+			velocity.y = 0
+			velocity.x = 0
+			animated_sprite.play("block")
+			await (animated_sprite.animation_finished)
+			block = false
 				
 func _damage():
 	vidas -= 1

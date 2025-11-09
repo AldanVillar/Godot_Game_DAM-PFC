@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://df4s7er1engec"]
+[gd_scene load_steps=55 format=3 uid="uid://df4s7er1engec"]
 
 [ext_resource type="Script" path="res://scripts/main_ch.gd" id="1_n3ddw"]
 [ext_resource type="Texture2D" uid="uid://fgq2c6lf0hmr" path="res://sprites/Knight/ATTACK 1.png" id="2_w733a"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bd0o3jtvkbkn3" path="res://sprites/Knight/RUN.png" id="6_6gvrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgqog"]
-size = Vector2(28, 74)
+size = Vector2(13, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rts3s"]
 atlas = ExtResource("2_w733a")
@@ -413,16 +413,32 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyv1d"]
+size = Vector2(29, 26)
+
 [node name="MainCh" type="CharacterBody2D"]
 script = ExtResource("1_n3ddw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_cgqog")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2.38419e-07, -9.53674e-07)
-scale = Vector2(2.29129, 2.29129)
+scale = Vector2(1.24177, 1.24177)
 sprite_frames = SubResource("SpriteFrames_g8d0h")
-animation = &"contraatq"
+animation = &"atq"
+
+[node name="atq" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="atq"]
+position = Vector2(20.5, 9)
+shape = SubResource("RectangleShape2D_uyv1d")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.0
+drag_top_margin = 0.49
+drag_right_margin = 0.0

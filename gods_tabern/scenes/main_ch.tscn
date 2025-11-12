@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://df4s7er1engec"]
+[gd_scene load_steps=54 format=3 uid="uid://df4s7er1engec"]
 
 [ext_resource type="Script" path="res://scripts/main_ch.gd" id="1_n3ddw"]
 [ext_resource type="Texture2D" uid="uid://fgq2c6lf0hmr" path="res://sprites/Knight/ATTACK 1.png" id="2_w733a"]
@@ -11,10 +11,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgqog"]
 size = Vector2(13, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rts3s"]
-atlas = ExtResource("2_w733a")
-region = Rect2(0, 0, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj342"]
 atlas = ExtResource("2_w733a")
@@ -187,9 +183,6 @@ region = Rect2(672, 0, 96, 84)
 [sub_resource type="SpriteFrames" id="SpriteFrames_g8d0h"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rts3s")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pj342")
 }, {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://df4s7er1engec"]
+[gd_scene load_steps=69 format=3 uid="uid://df4s7er1engec"]
 
 [ext_resource type="Script" path="res://scripts/main_ch.gd" id="1_n3ddw"]
 [ext_resource type="Texture2D" uid="uid://fgq2c6lf0hmr" path="res://sprites/Knight/ATTACK 1.png" id="2_w733a"]
@@ -499,6 +499,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyv1d"]
 size = Vector2(29, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jafre"]
+size = Vector2(30, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqql3"]
+size = Vector2(47, 54)
+
 [node name="MainCh" type="CharacterBody2D"]
 script = ExtResource("1_n3ddw")
 
@@ -510,7 +516,7 @@ shape = SubResource("RectangleShape2D_cgqog")
 texture_filter = 1
 scale = Vector2(1.24177, 1.24177)
 sprite_frames = SubResource("SpriteFrames_g8d0h")
-animation = &"death"
+animation = &"contraatq"
 
 [node name="atq" type="Area2D" parent="."]
 
@@ -525,3 +531,18 @@ drag_vertical_enabled = true
 drag_left_margin = 0.0
 drag_top_margin = 0.49
 drag_right_margin = 0.0
+
+[node name="parry" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parry"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_jafre")
+
+[node name="contraatq" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="contraatq"]
+position = Vector2(17.5, -4)
+shape = SubResource("RectangleShape2D_dqql3")
+
+[connection signal="area_entered" from="parry" to="." method="_on_parry_area_entered"]
+[connection signal="body_entered" from="contraatq" to="." method="_on_contraatq_body_entered"]

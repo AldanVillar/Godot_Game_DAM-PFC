@@ -90,6 +90,7 @@ func parry():
 func _damage():
 	vidas -= 1
 	damage = true
+	velocity.x = 0
 	animated_sprite.play("damage")
 	await (animated_sprite.animation_finished)
 	damage = false

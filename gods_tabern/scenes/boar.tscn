@@ -137,7 +137,7 @@ shape = SubResource("RectangleShape2D_cvh1l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0xarm")
-animation = &"run"
+animation = &"death"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -150,3 +150,6 @@ target_position = Vector2(-120, 0)
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 target_position = Vector2(120, 0)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

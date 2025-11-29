@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bxy0bpqswur16"]
+[gd_scene load_steps=35 format=4 uid="uid://bxy0bpqswur16"]
 
 [ext_resource type="PackedScene" uid="uid://df4s7er1engec" path="res://scenes/main_ch.tscn" id="1_1so66"]
 [ext_resource type="Texture2D" uid="uid://bharh8eb2quip" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_l0y1s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d36jf6m8qfref" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Assets/Buildings.png" id="6_6fua2"]
 [ext_resource type="Texture2D" uid="uid://ghoe7ppfvuq2" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="7_u63cp"]
 [ext_resource type="Texture2D" uid="uid://nflsbmq645fj" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Trees/Dark-Tree.png" id="8_2hwqj"]
+[ext_resource type="PackedScene" uid="uid://ckprl8fil3mtw" path="res://scenes/coin.tscn" id="8_v30rk"]
 [ext_resource type="PackedScene" uid="uid://c3o43ad8ikix4" path="res://scenes/bee.tscn" id="9_uw8h5"]
 [ext_resource type="PackedScene" uid="uid://dbty21v3ke07b" path="res://scenes/boar.tscn" id="10_m80ew"]
 [ext_resource type="PackedScene" uid="uid://c6t8w3mwlb5y8" path="res://scenes/void.tscn" id="12_fc1sx"]
@@ -11898,6 +11899,23 @@ tile_set = SubResource("TileSet_yang8")
 
 [node name="MainCh" parent="." instance=ExtResource("1_1so66")]
 position = Vector2(70, 213)
+
+[node name="coins" type="Node2D" parent="."]
+
+[node name="coin" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(503, 194)
+
+[node name="coin2" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(589, 192)
+
+[node name="coin3" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(570, 169)
+
+[node name="coin4" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(544, 158)
+
+[node name="coin5" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(519, 172)
 
 [node name="enemy" type="Node2D" parent="."]
 

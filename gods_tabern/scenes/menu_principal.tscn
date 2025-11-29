@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://ctuuk7vm3m4d6"]
+
+[ext_resource type="Texture2D" uid="uid://ctmwaeehxtd6" path="res://sprites/Menu/l987wcgulve81.png" id="1_ccvag"]
+[ext_resource type="Script" path="res://scripts/menu_principal.gd" id="1_psbsa"]
+[ext_resource type="Texture2D" uid="uid://beahprja7vw7x" path="res://sprites/Knight/IDLE.png" id="2_eail6"]
+[ext_resource type="Script" path="res://scripts/sprite_menu.gd" id="3_8ecvn"]
+[ext_resource type="AudioStream" uid="uid://btdaqu76ndgdh" path="res://sfx/Menu/MainMusic.mp3" id="5_5vlki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw3ga"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouqo6"]
+atlas = ExtResource("2_eail6")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm3s3"]
+atlas = ExtResource("2_eail6")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu0kj"]
+atlas = ExtResource("2_eail6")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpcms"]
+atlas = ExtResource("2_eail6")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef7jx"]
+atlas = ExtResource("2_eail6")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofj67"]
+atlas = ExtResource("2_eail6")
+region = Rect2(480, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_femnj"]
+atlas = ExtResource("2_eail6")
+region = Rect2(576, 0, 96, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ka2u0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouqo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm3s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu0kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpcms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef7jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofj67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_femnj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="MenuPrincipal" type="Node2D"]
+script = ExtResource("1_psbsa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("1_ccvag")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 451.0
+offset_top = 78.0
+offset_right = 699.0
+offset_bottom = 288.0
+theme_override_constants/separation = 19
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_gw3ga")
+text = "JUGAR"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_gw3ga")
+text = "OPCIONES"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_gw3ga")
+text = "SALIR"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(579, 500)
+scale = Vector2(2.5119, 2.5119)
+sprite_frames = SubResource("SpriteFrames_ka2u0")
+animation = &"idle"
+frame_progress = 0.122679
+script = ExtResource("3_8ecvn")
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5vlki")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

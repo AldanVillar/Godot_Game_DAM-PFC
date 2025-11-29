@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://lmc48adoupou"]
+
+[node name="HUD" type="Node2D"]
+
+[node name="life" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="life"]
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 53.0
+offset_bottom = 52.0
+
+[node name="TextureRect" type="TextureRect" parent="life"]
+offset_left = 14.0
+offset_top = 2.0
+offset_right = 54.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="life"]
+offset_left = 64.0
+offset_top = 12.0
+offset_right = 104.0
+offset_bottom = 35.0
+
+[node name="Label2" type="Label" parent="life"]
+offset_left = 85.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 31.0
+
+[node name="coins" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="coins"]
+offset_left = 13.0
+offset_top = 61.0
+offset_right = 53.0
+offset_bottom = 101.0
+
+[node name="TextureRect" type="TextureRect" parent="coins"]
+offset_left = 16.0
+offset_top = 63.0
+offset_right = 56.0
+offset_bottom = 103.0
+
+[node name="Label" type="Label" parent="coins"]
+offset_left = 33.0
+offset_top = 72.0
+offset_right = 73.0
+offset_bottom = 95.0
+
+[node name="Label2" type="Label" parent="coins"]
+offset_left = 66.0
+offset_top = 71.0
+offset_right = 106.0
+offset_bottom = 94.0

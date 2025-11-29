@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://8hjcvy7jsgg6"]
+
+[ext_resource type="Script" path="res://scripts/menu_opciones.gd" id="1_m7lks"]
+[ext_resource type="Texture2D" uid="uid://ctmwaeehxtd6" path="res://sprites/Menu/l987wcgulve81.png" id="1_xmdne"]
+[ext_resource type="Texture2D" uid="uid://beahprja7vw7x" path="res://sprites/Knight/IDLE.png" id="2_mox7o"]
+[ext_resource type="Script" path="res://scripts/sprite_menu.gd" id="3_63uy6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ik5u"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hm5j"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouqo6"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm3s3"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu0kj"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpcms"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef7jx"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofj67"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(480, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_femnj"]
+atlas = ExtResource("2_mox7o")
+region = Rect2(576, 0, 96, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o71h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouqo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm3s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu0kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpcms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef7jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofj67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_femnj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="MenuOpciones" type="Node2D"]
+script = ExtResource("1_m7lks")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("1_xmdne")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 451.0
+offset_top = 78.0
+offset_right = 699.0
+offset_bottom = 288.0
+theme_override_constants/separation = 19
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ik5u")
+text = "VOLUMEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.5
+step = 0.001
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hm5j")
+text = "ATRAS"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(579, 500)
+scale = Vector2(2.5119, 2.5119)
+sprite_frames = SubResource("SpriteFrames_4o71h")
+animation = &"idle"
+frame_progress = 0.400245
+script = ExtResource("3_63uy6")
+
+[connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

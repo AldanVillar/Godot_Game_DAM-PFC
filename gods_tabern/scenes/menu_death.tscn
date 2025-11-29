@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvkjmmqnjuafk"]
+
+[ext_resource type="Script" path="res://scripts/menu_death.gd" id="1_251b4"]
+[ext_resource type="Texture2D" uid="uid://ctwt4pnm8bg7h" path="res://sprites/Menu/craiyon_180404_pixel_graphic_horror_game_inspired__platform_background__dream_like__game.png" id="1_w6byn"]
+[ext_resource type="Texture2D" uid="uid://co4jfjnx6bhdx" path="res://sprites/Knight/DEATH.png" id="2_822hq"]
+[ext_resource type="AudioStream" uid="uid://bt0shpiocgsan" path="res://sfx/Menu/DeathMusic.mp3" id="4_t1bpg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqds8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b77gg"]
+atlas = ExtResource("2_822hq")
+region = Rect2(1056, 0, 96, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5moqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b77gg")
+}],
+"loop": true,
+"name": &"playedD",
+"speed": 5.0
+}]
+
+[node name="MenuDeath" type="Node2D"]
+script = ExtResource("1_251b4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_top = -35.0
+offset_right = 1153.0
+offset_bottom = 772.0
+texture = ExtResource("1_w6byn")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 451.0
+offset_top = 78.0
+offset_right = 699.0
+offset_bottom = 288.0
+theme_override_constants/separation = 19
+
+[node name="PlayAgain" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqds8")
+text = "JUGAR OTRA VEZ"
+
+[node name="MenuMain" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqds8")
+text = "MENU PRINCIPAL"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(581, 493)
+scale = Vector2(3.13095, 3.13095)
+sprite_frames = SubResource("SpriteFrames_5moqp")
+animation = &"playedD"
+frame_progress = 0.101322
+
+[node name="DeathMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_t1bpg")
+
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuMain" to="." method="_on_menu_main_pressed"]

@@ -100,6 +100,7 @@ vertical_alignment = 1
 layout_mode = 2
 max_value = 1.5
 step = 0.001
+value = 1.5
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 texture_filter = 1
@@ -114,7 +115,7 @@ position = Vector2(579, 500)
 scale = Vector2(2.5119, 2.5119)
 sprite_frames = SubResource("SpriteFrames_4o71h")
 animation = &"idle"
-frame_progress = 0.400245
+frame_progress = 0.385361
 script = ExtResource("3_63uy6")
 
 [connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

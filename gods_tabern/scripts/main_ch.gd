@@ -96,6 +96,7 @@ func parry():
 				
 func _damage():
 	vidas -= 1
+	$HUD/life.update_damage()
 	if vidas == 0:
 		_death()
 	else:
@@ -113,11 +114,11 @@ func _death():
 	$CollisionShape2D.queue_free()
 	animated_sprite.play("death")
 	await(animated_sprite.animation_finished)
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/menu_death.tscn")
 	dead = false
 	
 func _voidDeath():
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/menu_death.tscn")
 
 
 func _on_parry_area_entered(area: Area2D) -> void:

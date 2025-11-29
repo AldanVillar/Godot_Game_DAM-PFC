@@ -1,0 +1,139 @@
+[gd_scene load_steps=21 format=3 uid="uid://ckprl8fil3mtw"]
+
+[ext_resource type="Script" path="res://scripts/coin_2d.gd" id="1_g4qur"]
+[ext_resource type="Texture2D" uid="uid://crikn3y1g3p8r" path="res://sprites/Coins and heart/coin.png" id="2_10osv"]
+[ext_resource type="AudioStream" uid="uid://cdjy70knjdrla" path="res://sfx/coin/coin.mp3" id="3_mpren"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8vpv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvhex"]
+atlas = ExtResource("2_10osv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdh0x"]
+atlas = ExtResource("2_10osv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bckcr"]
+atlas = ExtResource("2_10osv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3tfh"]
+atlas = ExtResource("2_10osv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8bnu"]
+atlas = ExtResource("2_10osv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el827"]
+atlas = ExtResource("2_10osv")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwh51"]
+atlas = ExtResource("2_10osv")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu52h"]
+atlas = ExtResource("2_10osv")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg6er"]
+atlas = ExtResource("2_10osv")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e80ws"]
+atlas = ExtResource("2_10osv")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00aor"]
+atlas = ExtResource("2_10osv")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkiby"]
+atlas = ExtResource("2_10osv")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f5tm"]
+atlas = ExtResource("2_10osv")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftqt0"]
+atlas = ExtResource("2_10osv")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvspb"]
+atlas = ExtResource("2_10osv")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dp5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvhex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdh0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bckcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3tfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8bnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el827")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwh51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu52h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg6er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e80ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00aor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkiby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f5tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftqt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvspb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 17.0
+}]
+
+[node name="coin" type="Node2D"]
+
+[node name="Coin2D" type="Area2D" parent="."]
+script = ExtResource("1_g4qur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2D"]
+shape = SubResource("RectangleShape2D_e8vpv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7dp5g")
+animation = &"idle"
+frame_progress = 0.70825
+
+[node name="Coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mpren")
+
+[connection signal="body_entered" from="Coin2D" to="Coin2D" method="_on_body_entered"]

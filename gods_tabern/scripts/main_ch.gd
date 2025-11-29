@@ -15,7 +15,9 @@ var dead = false
 
 func _ready():
 	$"atq/CollisionShape2D".disabled = true
-
+	$parry/CollisionShape2D.disabled = true
+	$contraatq/CollisionShape2D.disabled = true
+	
 func _physics_process(delta: float) -> void:
 	jump(delta)
 	move_x()
@@ -79,11 +81,15 @@ func _block():
 	if atq == false and damage == false and block == false and dead == false:
 		if Input.is_action_just_pressed("block") and velocity.y == 0:
 			block = true
+			$CollisionShape2D.disabled = true
+			$parry/CollisionShape2D.disabled = false
 			velocity.y = 0
 			velocity.x = 0
 			animated_sprite.play("block")
 			await (animated_sprite.animation_finished)
 			block = false
+			$CollisionShape2D.disabled = false
+			$parry/CollisionShape2D.disabled = true
 			
 func parry():
 	print()
@@ -112,3 +118,14 @@ func _death():
 	
 func _voidDeath():
 	get_tree().reload_current_scene()
+
+
+func _on_parry_area_entered(area: Area2D) -> void:
+	$contraatq/CollisionShape2D.disabled = false
+	animated_sprite.play("contraatq")
+	await (animated_sprite.animation_finished)
+	$contraatq/CollisionShape2D.disabled = true
+
+
+func _on_contraatq_body_entered(body: Node2D) -> void:
+	body._parryDmg()

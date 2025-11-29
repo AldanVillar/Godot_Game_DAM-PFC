@@ -19,7 +19,15 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = false
 
 	move_and_slide()
-
+	
+func _parryDmg():
+	velocity.x = 0
+	velocity.y = 0
+	$AnimatedSprite2D.play("death")
+	$Area2D/CollisionShape2D.queue_free()
+	$CollisionShape2D.queue_free()
+	await($AnimatedSprite2D.animation_finished)
+	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "MainCh":
@@ -37,10 +45,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	velocity.x = 0
-	velocity.y = 0
-	$AnimatedSprite2D.play("death")
-	$Area2D/CollisionShape2D.queue_free()
-	$CollisionShape2D.queue_free()
-	await($AnimatedSprite2D.animation_finished)
-	queue_free()
+	if area.name == "atq" or area.name == "contraatq":
+		velocity.x = 0
+		velocity.y = 0
+		$AnimatedSprite2D.play("death")
+		$Area2D/CollisionShape2D.queue_free()
+		$CollisionShape2D.queue_free()
+		await($AnimatedSprite2D.animation_finished)
+		queue_free()

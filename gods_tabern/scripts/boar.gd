@@ -24,11 +24,23 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 				
 	move_and_slide()
+	
+func _parryDmg():
+	velocity.x = 0
+	velocity.y = 0
+	$AnimatedSprite2D.play("death")
+	$Area2D/CollisionShape2D.queue_free()
+	$CollisionShape2D.queue_free()
+	await($AnimatedSprite2D.animation_finished)
+	queue_free()
 		
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "atq":
-		vida -= 1
-		if vida == 0:
+	if area.name == "atq" or area.name == "contraatq":
+		if  area.name == "atq":
+			vida -= 1
+		if  area.name == "contraatq":
+			vida -= 3
+		if vida <= 0:
 			velocity.x = 0
 			velocity.y = 0
 			gravity = 0

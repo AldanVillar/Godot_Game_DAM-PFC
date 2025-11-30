@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://c1qw1gd5d8snq"]
+[gd_scene load_steps=16 format=4 uid="uid://c1qw1gd5d8snq"]
 
+[ext_resource type="Script" path="res://scripts/ultimo_nivel.gd" id="1_pr5b6"]
 [ext_resource type="Texture2D" uid="uid://duibv7vj04hnn" path="res://sprites/Castle/Tilesetv3.png" id="1_t8mgp"]
 [ext_resource type="Texture2D" uid="uid://d36jf6m8qfref" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Assets/Buildings.png" id="2_d1b1w"]
 [ext_resource type="Texture2D" uid="uid://8svdjovsvem3" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="3_ybwau"]
@@ -7,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c6t8w3mwlb5y8" path="res://scenes/void.tscn" id="5_npl78"]
 [ext_resource type="PackedScene" uid="uid://nev40qm2l1ke" path="res://scenes/snail.tscn" id="5_oi2ho"]
 [ext_resource type="PackedScene" uid="uid://dbty21v3ke07b" path="res://scenes/boar.tscn" id="6_ro2g6"]
+[ext_resource type="PackedScene" uid="uid://ckprl8fil3mtw" path="res://scenes/coin.tscn" id="8_ac8on"]
 [ext_resource type="PackedScene" uid="uid://do1fb61efxprr" path="res://scenes/end_transfer.tscn" id="8_i7u5u"]
+[ext_resource type="AudioStream" uid="uid://dor8ju22r25ms" path="res://sfx/Levels/Majestic Castle.mp3" id="10_qu253"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v33k"]
 texture = ExtResource("1_t8mgp")
@@ -1615,6 +1618,7 @@ sources/1 = SubResource("TileSetAtlasSource_pe34i")
 sources/2 = SubResource("TileSetAtlasSource_30dpu")
 
 [node name="ultimo_nivel" type="Node2D"]
+script = ExtResource("1_pr5b6")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -1646,6 +1650,62 @@ position = Vector2(1879, 351)
 [node name="Boar2" parent="enemy" instance=ExtResource("6_ro2g6")]
 position = Vector2(1255, 353)
 
+[node name="coins" type="Node2D" parent="."]
+
+[node name="coin" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(301, 436)
+
+[node name="coin2" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(318, 411)
+
+[node name="coin3" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(344, 394)
+
+[node name="coin4" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(371, 411)
+
+[node name="coin5" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(391, 438)
+
+[node name="coin6" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1516, 308)
+
+[node name="coin7" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1540, 308)
+
+[node name="coin8" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1645, 278)
+
+[node name="coin9" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1539, 230)
+
+[node name="coin10" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1516, 230)
+
+[node name="coin11" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1443, 182)
+
+[node name="coin12" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1421, 182)
+
+[node name="coin13" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1531, 134)
+
+[node name="coin14" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1555, 134)
+
+[node name="coin15" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1692, 119)
+
+[node name="coin16" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1715, 119)
+
+[node name="coin17" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1838, 117)
+
+[node name="coin18" parent="coins" instance=ExtResource("8_ac8on")]
+position = Vector2(1860, 117)
+
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_u2r3r")
@@ -1660,3 +1720,6 @@ position = Vector2(20, 621)
 
 [node name="endTransfer" parent="." instance=ExtResource("8_i7u5u")]
 position = Vector2(2289, 46)
+
+[node name="MajesticCastle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qu253")

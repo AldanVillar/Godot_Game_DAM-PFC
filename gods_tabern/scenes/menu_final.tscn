@@ -57,7 +57,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_rvllf")
-text = "JUGAR OTRA VEZ"
+text = "SEGUIR EL DESAFÍO"
 
 [node name="MenuMain" type="Button" parent="VBoxContainer"]
 texture_filter = 1

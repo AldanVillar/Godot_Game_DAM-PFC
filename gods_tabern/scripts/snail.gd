@@ -40,7 +40,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			velocity.x = 0
 			velocity.y = 0
 			gravity = 0
-			$AnimatedSprite2D.play("death")
+			$AnimatedSprite2D.play("damage")
 			$Area2D/CollisionShape2D.queue_free()
 			$CollisionShape2D.queue_free()
 			await($AnimatedSprite2D.animation_finished)

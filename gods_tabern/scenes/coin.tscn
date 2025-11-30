@@ -135,5 +135,6 @@ frame_progress = 0.70825
 
 [node name="Coin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_mpren")
+volume_db = -20.0
 
 [connection signal="body_entered" from="Coin2D" to="Coin2D" method="_on_body_entered"]

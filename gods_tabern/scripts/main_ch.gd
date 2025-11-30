@@ -5,7 +5,6 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -320.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_facing_right = true
-var vidas = 10
 var damage = false
 var atq = false
 var block = false
@@ -95,9 +94,8 @@ func _block():
 			
 				
 func _damage():
-	vidas -= 1
-	$HUD/life.update_damage()
-	if vidas == 0:
+	Globals.vidas -= 1
+	if Globals.vidas == 0:
 		_death()
 	else:
 		damage = true

@@ -11921,6 +11921,33 @@ position = Vector2(544, 158)
 [node name="coin5" parent="coins" instance=ExtResource("8_v30rk")]
 position = Vector2(519, 172)
 
+[node name="coin6" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(668, 202)
+
+[node name="coin7" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(685, 170)
+
+[node name="coin8" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(712, 148)
+
+[node name="coin9" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(746, 153)
+
+[node name="coin10" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(821, 159)
+
+[node name="coin11" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(848, 135)
+
+[node name="coin12" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(882, 121)
+
+[node name="coin13" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(916, 139)
+
+[node name="coin14" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(937, 168)
+
 [node name="enemy" type="Node2D" parent="."]
 
 [node name="Boar" parent="enemy" instance=ExtResource("10_m80ew")]

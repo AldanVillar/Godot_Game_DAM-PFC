@@ -7,5 +7,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "MainCh":
 		$"../Coin".play()
-		$"../../../MainCh/HUD/coins".coins_collected()
+		Globals.coins += 1
 		queue_free()

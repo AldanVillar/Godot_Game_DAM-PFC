@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3pngas2rjdsr"]
+
+[ext_resource type="Texture2D" uid="uid://c4q6kowbo2jei" path="res://sprites/Menu/thumb-1920-1351304.png" id="1_gpr3j"]
+[ext_resource type="Script" path="res://scripts/menu_final.gd" id="1_kcro7"]
+[ext_resource type="AudioStream" uid="uid://bt0shpiocgsan" path="res://sfx/Menu/DeathMusic.mp3" id="3_8hcpy"]
+[ext_resource type="Texture2D" uid="uid://db20v4v48g8oh" path="res://sprites/Menu/pngwing.com.png" id="3_ojwjl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvllf"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="menu_final" type="Node2D"]
+script = ExtResource("1_kcro7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("1_gpr3j")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 254.0
+offset_top = 42.0
+offset_right = 932.0
+offset_bottom = 424.0
+texture = ExtResource("3_ojwjl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 74.0
+offset_right = 1186.0
+offset_bottom = 401.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Al final del camino, el
+caballero descubrió que
+ningún tesoro vale más
+que la vida que perdió por
+intentar poseerlo"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 453.0
+offset_top = 459.0
+offset_right = 701.0
+offset_bottom = 669.0
+theme_override_constants/separation = 19
+
+[node name="PlayAgain" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_rvllf")
+text = "JUGAR OTRA VEZ"
+
+[node name="MenuMain" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_rvllf")
+text = "MENU PRINCIPAL"
+
+[node name="DeathMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8hcpy")
+
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuMain" to="." method="_on_menu_main_pressed"]

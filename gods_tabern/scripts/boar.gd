@@ -38,8 +38,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "atq" or area.name == "contraatq":
 		if  area.name == "atq":
 			vida -= 1
+			$BoarHurt.play()
 		if  area.name == "contraatq":
 			vida -= 3
+			$BoarHurt.play()
 		if vida <= 0:
 			velocity.x = 0
 			velocity.y = 0

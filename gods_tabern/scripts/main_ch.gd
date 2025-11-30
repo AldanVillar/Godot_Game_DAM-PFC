@@ -5,11 +5,11 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -320.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_facing_right = true
-var vidas = 10
 var damage = false
 var atq = false
 var block = false
 var dead = false
+var end = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func jump(delta):
-	if atq == false and block == false and damage == false and dead == false:
+	if atq == false and block == false and damage == false and dead == false and end == false:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		
@@ -36,7 +36,7 @@ func jump(delta):
 			velocity.y += gravity * delta
 
 func move_x():
-	if atq == false and block == false and damage == false and dead == false:
+	if atq == false and block == false and damage == false and dead == false and end == false:
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction:
 			velocity.x = direction * SPEED
@@ -44,14 +44,14 @@ func move_x():
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 func flip():
-	if atq == false and block == false and damage == false and dead == false:
+	if atq == false and block == false and damage == false and dead == false and end == false:
 		if (is_facing_right and velocity.x < 0) or (not is_facing_right and velocity.x > 0):
 			scale.x *= -1
 			is_facing_right = not is_facing_right
 
 
 func update_movement_animations():
-	if atq == false and block == false and damage == false and dead == false:
+	if atq == false and block == false and damage == false and dead == false and end == false:
 		if not is_on_floor():
 			if velocity.y < 0:
 				animated_sprite.play("jump")
@@ -66,19 +66,20 @@ func update_movement_animations():
 				animated_sprite.play("idle")
 				
 func _atq():
-	if atq == false and damage == false and block == false and dead == false:
+	if atq == false and damage == false and block == false and dead == false and end == false:
 		if Input.is_action_just_pressed("atq") and velocity.y == 0:
 			atq = true
 			$"atq/CollisionShape2D".disabled = false
 			velocity.y = 0
 			velocity.x = 0
 			animated_sprite.play("atq")
+			$SFX/Swing.play()
 			await (animated_sprite.animation_finished)
 			$"atq/CollisionShape2D".disabled = true
 			atq = false
 
 func _block():
-	if atq == false and damage == false and block == false and dead == false:
+	if atq == false and damage == false and block == false and dead == false and end == false:
 		if Input.is_action_just_pressed("block") and velocity.y == 0:
 			block = true
 			$CollisionShape2D.disabled = true
@@ -91,18 +92,16 @@ func _block():
 			$CollisionShape2D.disabled = false
 			$parry/CollisionShape2D.disabled = true
 			
-func parry():
-	print()
 				
 func _damage():
-	vidas -= 1
-	$HUD/life.update_damage()
-	if vidas == 0:
+	Globals.vidas -= 1
+	if Globals.vidas == 0:
 		_death()
 	else:
 		damage = true
 		velocity.x = 0
 		animated_sprite.play("damage")
+		$"SFX/MinecraftDamage-SoundEffect".play()
 		await (animated_sprite.animation_finished)
 		damage = false
 	
@@ -130,3 +129,12 @@ func _on_parry_area_entered(area: Area2D) -> void:
 
 func _on_contraatq_body_entered(body: Node2D) -> void:
 	body._parryDmg()
+	
+func _end():
+	end = true
+	velocity.x = 0
+	velocity.y = 0
+	$CollisionShape2D.queue_free()
+	animated_sprite.play("death")
+	await (animated_sprite.animation_finished)
+	get_tree().change_scene_to_file("res://scenes/menu_final.tscn")

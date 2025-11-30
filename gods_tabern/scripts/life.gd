@@ -1,4 +1,4 @@
 extends CanvasLayer
 
-func update_damage():
-	$Lives.text = str($"../..".vidas)
+func _process(delta):
+	$Lives.text = str(Globals.vidas)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3nkx1q41j28t"]
+
+[ext_resource type="Script" path="res://scripts/level_transfer.gd" id="1_ig4et"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmm3r"]
+
+[node name="levelTransfer" type="Area2D"]
+script = ExtResource("1_ig4et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qmm3r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w7pwxk6dppwn"
+path="res://.godot/imported/Minecraft Damage - Sound Effect.mp3-fcf564d4ee3775a67e9b816f51f9dfa2.mp3str"
+
+[deps]
+
+source_file="res://sfx/Characters/Minecraft Damage - Sound Effect.mp3"
+dest_files=["res://.godot/imported/Minecraft Damage - Sound Effect.mp3-fcf564d4ee3775a67e9b816f51f9dfa2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=4 uid="uid://bxy0bpqswur16"]
+[gd_scene load_steps=38 format=4 uid="uid://bxy0bpqswur16"]
 
 [ext_resource type="PackedScene" uid="uid://df4s7er1engec" path="res://scenes/main_ch.tscn" id="1_1so66"]
+[ext_resource type="Script" path="res://scripts/primer_nivel.gd" id="1_gu7bv"]
 [ext_resource type="Texture2D" uid="uid://bharh8eb2quip" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_l0y1s"]
 [ext_resource type="Texture2D" uid="uid://8svdjovsvem3" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_scn0f"]
 [ext_resource type="Texture2D" uid="uid://rt7i0jo3pwbi" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Assets/Props-Rocks.png" id="3_b68y4"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://c3o43ad8ikix4" path="res://scenes/bee.tscn" id="9_uw8h5"]
 [ext_resource type="PackedScene" uid="uid://dbty21v3ke07b" path="res://scenes/boar.tscn" id="10_m80ew"]
 [ext_resource type="PackedScene" uid="uid://c6t8w3mwlb5y8" path="res://scenes/void.tscn" id="12_fc1sx"]
+[ext_resource type="AudioStream" uid="uid://bw0invb0j7bwd" path="res://sfx/Levels/ForestMusic.mp3" id="14_vhpdf"]
+[ext_resource type="PackedScene" uid="uid://d3nkx1q41j28t" path="res://scenes/level_transfer.tscn" id="16_5sumf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxx3x"]
 texture = ExtResource("1_l0y1s")
@@ -6428,7 +6431,7 @@ sources/1 = SubResource("TileSetAtlasSource_dwxds")
 sources/2 = SubResource("TileSetAtlasSource_2ngo4")
 sources/3 = SubResource("TileSetAtlasSource_3awbh")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vpvg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spyj2"]
 texture = ExtResource("2_scn0f")
 0:0/0 = 0
 1:0/0 = 0
@@ -6936,7 +6939,7 @@ texture = ExtResource("2_scn0f")
 18:24/0 = 0
 19:24/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5caw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_de0tc"]
 texture = ExtResource("3_b68y4")
 1:0/0 = 0
 2:0/0 = 0
@@ -7271,7 +7274,7 @@ texture = ExtResource("3_b68y4")
 10:20/0 = 0
 11:20/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_auhxl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_draik"]
 texture = ExtResource("4_jvx8h")
 0:0/0 = 0
 1:0/0 = 0
@@ -7559,7 +7562,7 @@ texture = ExtResource("4_jvx8h")
 17:23/0 = 0
 18:23/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ldyi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3a5ok"]
 texture = ExtResource("5_cjnub")
 0:0/0 = 0
 1:0/0 = 0
@@ -7812,7 +7815,7 @@ texture = ExtResource("5_cjnub")
 6:14/0 = 0
 7:14/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx4ex"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kbm5j"]
 texture = ExtResource("6_6fua2")
 0:0/0 = 0
 1:0/0 = 0
@@ -8214,7 +8217,7 @@ texture = ExtResource("6_6fua2")
 24:22/0 = 0
 24:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glm86"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyewc"]
 texture = ExtResource("7_u63cp")
 7:0/0 = 0
 8:0/0 = 0
@@ -8901,7 +8904,7 @@ texture = ExtResource("7_u63cp")
 54:15/0 = 0
 55:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8y4ik"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7wp3"]
 texture = ExtResource("8_2hwqj")
 2:0/0 = 0
 3:0/0 = 0
@@ -11872,15 +11875,16 @@ texture = ExtResource("8_2hwqj")
 
 [sub_resource type="TileSet" id="TileSet_1l4nd"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_5vpvg")
-sources/1 = SubResource("TileSetAtlasSource_n5caw")
-sources/2 = SubResource("TileSetAtlasSource_auhxl")
-sources/3 = SubResource("TileSetAtlasSource_7ldyi")
-sources/4 = SubResource("TileSetAtlasSource_mx4ex")
-sources/5 = SubResource("TileSetAtlasSource_glm86")
-sources/6 = SubResource("TileSetAtlasSource_8y4ik")
+sources/0 = SubResource("TileSetAtlasSource_spyj2")
+sources/1 = SubResource("TileSetAtlasSource_de0tc")
+sources/2 = SubResource("TileSetAtlasSource_draik")
+sources/3 = SubResource("TileSetAtlasSource_3a5ok")
+sources/4 = SubResource("TileSetAtlasSource_kbm5j")
+sources/5 = SubResource("TileSetAtlasSource_nyewc")
+sources/6 = SubResource("TileSetAtlasSource_u7wp3")
 
 [node name="primer_nivel" type="Node2D"]
+script = ExtResource("1_gu7bv")
 
 [node name="TileMapLayerSky" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -11917,6 +11921,33 @@ position = Vector2(544, 158)
 [node name="coin5" parent="coins" instance=ExtResource("8_v30rk")]
 position = Vector2(519, 172)
 
+[node name="coin6" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(668, 202)
+
+[node name="coin7" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(685, 170)
+
+[node name="coin8" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(712, 148)
+
+[node name="coin9" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(746, 153)
+
+[node name="coin10" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(821, 159)
+
+[node name="coin11" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(848, 135)
+
+[node name="coin12" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(882, 121)
+
+[node name="coin13" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(916, 139)
+
+[node name="coin14" parent="coins" instance=ExtResource("8_v30rk")]
+position = Vector2(937, 168)
+
 [node name="enemy" type="Node2D" parent="."]
 
 [node name="Boar" parent="enemy" instance=ExtResource("10_m80ew")]
@@ -11932,3 +11963,9 @@ tile_set = SubResource("TileSet_1l4nd")
 
 [node name="void" parent="." instance=ExtResource("12_fc1sx")]
 position = Vector2(728, 572)
+
+[node name="ForestMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_vhpdf")
+
+[node name="levelTransfer" parent="." instance=ExtResource("16_5sumf")]
+position = Vector2(1872, 178)

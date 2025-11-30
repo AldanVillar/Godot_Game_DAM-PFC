@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://df4s7er1engec"]
+[gd_scene load_steps=72 format=3 uid="uid://df4s7er1engec"]
 
 [ext_resource type="Script" path="res://scripts/main_ch.gd" id="1_n3ddw"]
 [ext_resource type="Texture2D" uid="uid://fgq2c6lf0hmr" path="res://sprites/Knight/ATTACK 1.png" id="2_w733a"]
@@ -10,9 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://co4jfjnx6bhdx" path="res://sprites/Knight/DEATH.png" id="6_0yjfd"]
 [ext_resource type="Texture2D" uid="uid://bd0o3jtvkbkn3" path="res://sprites/Knight/RUN.png" id="6_6gvrh"]
 [ext_resource type="PackedScene" uid="uid://lmc48adoupou" path="res://scenes/hud.tscn" id="10_q7aci"]
+[ext_resource type="AudioStream" uid="uid://bda2hm7kvpdcg" path="res://sfx/Characters/Swing.mp3" id="11_urc71"]
+[ext_resource type="AudioStream" uid="uid://w7pwxk6dppwn" path="res://sfx/Characters/Minecraft Damage - Sound Effect.mp3" id="12_hsn40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgqog"]
-size = Vector2(13, 37)
+size = Vector2(18, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj342"]
 atlas = ExtResource("2_w733a")
@@ -510,7 +512,7 @@ size = Vector2(47, 54)
 script = ExtResource("1_n3ddw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4.5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_cgqog")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -546,6 +548,14 @@ position = Vector2(17.5, -4)
 shape = SubResource("RectangleShape2D_dqql3")
 
 [node name="HUD" parent="." instance=ExtResource("10_q7aci")]
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Swing" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_urc71")
+
+[node name="MinecraftDamage-SoundEffect" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_hsn40")
 
 [connection signal="area_entered" from="parry" to="." method="_on_parry_area_entered"]
 [connection signal="body_entered" from="contraatq" to="." method="_on_contraatq_body_entered"]

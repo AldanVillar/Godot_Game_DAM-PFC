@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3o43ad8ikix4"]
+[gd_scene load_steps=21 format=3 uid="uid://c3o43ad8ikix4"]
 
 [ext_resource type="Texture2D" uid="uid://dexwbprorby40" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Attack/Attack-Sheet.png" id="1_1p7rn"]
 [ext_resource type="Script" path="res://scripts/bee.gd" id="1_6s174"]
 [ext_resource type="Texture2D" uid="uid://b4oev3lkktcx" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Hit/Hit-Sheet.png" id="2_1gr7j"]
 [ext_resource type="Texture2D" uid="uid://c7ljki3cp2sx0" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="3_1ff7t"]
+[ext_resource type="AudioStream" uid="uid://c8li6meok2w3x" path="res://sfx/Characters/Bee hurt.mp3" id="5_r5oo6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5oqu"]
 radius = 8.55862
@@ -135,6 +136,9 @@ target_position = Vector2(-120, 0)
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 target_position = Vector2(120, 0)
+
+[node name="BeeHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r5oo6")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

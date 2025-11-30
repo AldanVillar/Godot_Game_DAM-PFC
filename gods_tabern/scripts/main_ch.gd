@@ -73,6 +73,7 @@ func _atq():
 			velocity.y = 0
 			velocity.x = 0
 			animated_sprite.play("atq")
+			$SFX/Swing.play()
 			await (animated_sprite.animation_finished)
 			$"atq/CollisionShape2D".disabled = true
 			atq = false
@@ -91,8 +92,6 @@ func _block():
 			$CollisionShape2D.disabled = false
 			$parry/CollisionShape2D.disabled = true
 			
-func parry():
-	print()
 				
 func _damage():
 	vidas -= 1
@@ -103,6 +102,7 @@ func _damage():
 		damage = true
 		velocity.x = 0
 		animated_sprite.play("damage")
+		$"SFX/MinecraftDamage-SoundEffect".play()
 		await (animated_sprite.animation_finished)
 		damage = false
 	

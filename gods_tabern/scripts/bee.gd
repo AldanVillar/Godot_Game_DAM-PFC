@@ -51,5 +51,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		$AnimatedSprite2D.play("death")
 		$Area2D/CollisionShape2D.queue_free()
 		$CollisionShape2D.queue_free()
+		$BeeHurt.play()
 		await($AnimatedSprite2D.animation_finished)
 		queue_free()

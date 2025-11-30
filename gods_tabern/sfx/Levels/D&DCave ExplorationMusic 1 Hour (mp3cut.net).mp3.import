@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbqtebi7w72gg"
+path="res://.godot/imported/D&DCave ExplorationMusic 1 Hour (mp3cut.net).mp3-402dc8dc2a7744467d7850c23119fb2b.mp3str"
+
+[deps]
+
+source_file="res://sfx/Levels/D&DCave ExplorationMusic 1 Hour (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/D&DCave ExplorationMusic 1 Hour (mp3cut.net).mp3-402dc8dc2a7744467d7850c23119fb2b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

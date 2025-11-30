@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbty21v3ke07b"]
+[gd_scene load_steps=23 format=3 uid="uid://dbty21v3ke07b"]
 
 [ext_resource type="Texture2D" uid="uid://b0yy3vjs0x4bq" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Idle/Idle-Sheet.png" id="1_1h4t3"]
 [ext_resource type="Script" path="res://scripts/boar.gd" id="1_wx0g3"]
 [ext_resource type="Texture2D" uid="uid://vkx6cbbwqfkk" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Run/Run-Sheet.png" id="2_acs4j"]
 [ext_resource type="Texture2D" uid="uid://j116envtw66m" path="res://sprites/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Hit-Vanish/Hit-Sheet.png" id="2_gmj5m"]
+[ext_resource type="AudioStream" uid="uid://dmgyyqvnp0snl" path="res://sfx/Characters/Boar hurt.mp3" id="5_6ri7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvh1l"]
 size = Vector2(23, 26)
@@ -150,6 +151,9 @@ target_position = Vector2(-120, 0)
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 target_position = Vector2(120, 0)
+
+[node name="BoarHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6ri7a")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

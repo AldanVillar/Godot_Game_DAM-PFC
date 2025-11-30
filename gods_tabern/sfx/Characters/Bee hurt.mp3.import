@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8li6meok2w3x"
+path="res://.godot/imported/Bee hurt.mp3-3a69f6d310d3ae547018c5c9fbea715d.mp3str"
+
+[deps]
+
+source_file="res://sfx/Characters/Bee hurt.mp3"
+dest_files=["res://.godot/imported/Bee hurt.mp3-3a69f6d310d3ae547018c5c9fbea715d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
